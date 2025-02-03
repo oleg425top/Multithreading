@@ -1,5 +1,6 @@
 import random
 import threading
+import time
 
 random_list = []
 def randomizer(random_list, event_for_set ):
@@ -13,7 +14,9 @@ def randomizer(random_list, event_for_set ):
 
 def sum_elem(random_list, event_for_wait):
     event_for_wait.wait()
+    time.sleep(0.5)
     print(f'Сумма всех элементов: {sum(random_list)}')
+
 
 
 def average(random_list, event_for_wait):
@@ -30,7 +33,6 @@ thread_2 = threading.Thread(target=sum_elem, args=(random_list, event1,))
 thread_3 = threading.Thread(target=average, args=(random_list, event1, ))
 
 thread_1.start()
-event1.set()
 thread_2.start()
 thread_3.start()
 
