@@ -17,25 +17,25 @@ def randomizer(random_list, event_for_set):
         random_list.append(rand_number)
     print(f'Список чисел: {random_list}')
 
-    with open(fr'task_2/files\{path}.json', 'w', encoding='utf-8') as file:
+    with open(fr'files\{path}.json', 'w', encoding='utf-8') as file:
         json.dump(random_list, file, ensure_ascii=False, indent=3)
     event_for_set.set()
 
 def simple_number(event_for_wait):
     event_for_wait.wait()
-    with open(fr'task_2/files\{path}.json', 'r', encoding='utf-8') as file:
+    with open(fr'files\{path}.json', 'r', encoding='utf-8') as file:
         random_list_from_file = json.load(file)
     new_list = []
     for number in random_list_from_file:
         if isprime(number):
             new_list.append(number)
     print(f'Простые числа: {new_list} записаны в файл')
-    with open(r'files/simple_numbers', 'w', encoding='utf-8') as file:
+    with open(r'files\simple_numbers', 'w', encoding='utf-8') as file:
         file.write(str(new_list))
 
 def factorial_of_number(event_for_wait):
     event_for_wait.wait()
-    with open(fr'task_2/files\{path}.json', 'r', encoding='utf-8') as file:
+    with open(fr'files\{path}.json', 'r', encoding='utf-8') as file:
         random_list_from_file = json.load(file)
     new_list = []
     for number in random_list_from_file:
@@ -43,7 +43,7 @@ def factorial_of_number(event_for_wait):
         new_list.append(factorial)
     print(f'Факториалы чисел:\n {new_list}\n записаны в файл')
 
-    with open(r'files/factorial_of_numbers', 'w', encoding='utf-8') as file:
+    with open(r'files\factorial_of_numbers', 'w', encoding='utf-8') as file:
         file.write(str(new_list))
 
 
